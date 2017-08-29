@@ -1,3 +1,7 @@
-<section class="questionnaires">
-	//List of questionnaires
-</section>
+<ul class="questionnaires">
+	{{#each model as |questionnaire|}}
+		<li class="questionnaires__item">
+			<h2>{{questionnaire.title}}</h2>
+		</li>
+	{{/each}}
+</ul>
