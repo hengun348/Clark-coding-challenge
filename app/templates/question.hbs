@@ -1,0 +1,6 @@
+<strong>{{model.title}}</strong>
+<p>{{model.description}}</p>
+{{#if isNotFirstQuestion}}
+	<button {{action "previousQuestion"}}>Previous</button>
+{{/if}}
+<button {{action "nextQuestion"}}>Next</button>
