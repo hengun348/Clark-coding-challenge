@@ -1,10 +1,27 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	questionnaireHelper: Ember.inject.service('questionnaire-helper'),	
 	answer: '',
+	multiAnswers: [],
+	isFreeTextType: null,
+	isMultipleChoiceSingleAnswerType: null,
+	isMultipleChoiceMultiAnswerType: null,
 	isNotFirstQuestion: null,
 
 	init() {
+		this.set('isFreeTextType', Ember.computed('model', function() {
+			return this.get('model').type === 'freeText';
+		}));
+
+		this.set('isMultipleChoiceSingleAnswerType', Ember.computed('model', function() {
+			return this.get('model').type === 'multipleChoicesSingleAnswer';
+		}));
+
+		this.set('isMultipleChoiceMultiAnswerType', Ember.computed('model', function() {
+			return this.get('model').type === 'multipleChoicesMultiAnswer';
+		}));
+
 		this.set('isNotFirstQuestion', Ember.computed('model', function() {
 			return this.get('questionnaireHelper').getCurrentQuestionIndex() !== 0;
 		}));
