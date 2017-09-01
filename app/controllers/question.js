@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
 			if(nextQuestion) {
 				this.transitionToRoute('question', nextQuestion); //send in single question
 			} else {
-				//To show finish page
+				this.transitionToRoute('finish'); //send in single question
 			}
 		},
 		previousQuestion() {

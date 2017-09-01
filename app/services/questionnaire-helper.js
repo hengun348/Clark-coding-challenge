@@ -33,5 +33,8 @@ export default Ember.Service.extend({
 
 		this.decrementProperty('currentQuestionIndex');
 		return this.get('questions')[this.get('currentQuestionIndex')];
+	},
+	lastQuestion() {
+		return this.get('questions')[this.get('numberOfQuestions')-1];
 	}
 });
