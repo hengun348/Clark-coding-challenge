@@ -1,8 +1,7 @@
-<strong>{{model.title}}</strong>
 <p>{{model.description}}</p>
 <p>
 	{{#if isFreeTextType}}
-		{{input type="text" value=answer }}
+		{{input type="text" value=answer}}
 	{{/if}}
 	{{#if isMultipleChoiceSingleAnswerType}}
 		{{#each model.options as |option|}}
