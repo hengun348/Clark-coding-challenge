@@ -43,6 +43,7 @@
   },
   "private": true,
   "dependencies": {
+    "ember-multiselect-checkboxes": "^0.10.3",
     "ember-radio-buttons": "^4.0.3"
   }
 }
