@@ -1,4 +1,4 @@
-<p>{{model.description}}</p>
+<p>{{model.description}} {{if model.mandatory '*'}}</p>
 <p>
 	{{#if isFreeTextType}}
 		{{input type="text" value=answer}}
@@ -9,11 +9,11 @@
 		{{/each}}
 	{{/if}}
 	{{#if isMultipleChoiceMultiAnswerType}}
-			{{multiselect-checkboxes options=model.options selection=multiAnswers}}
+			{{multiselect-checkboxes options=model.options selection=answer}}
 	{{/if}}
 </p>
 
 {{#if isNotFirstQuestion}}
 	<button {{action "previousQuestion"}}>Previous</button>
 {{/if}}
-<button {{action "nextQuestion"}}>Next</button>
+<button {{action "nextQuestion"}} disabled={{mandatoryAndNoAnswer}}>Next</button>

@@ -2,8 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	questionnaireHelper: Ember.inject.service('questionnaire-helper'),	
-	answer: '',
-	multiAnswers: [],
+	answer: [],
 	isFreeTextType: null,
 	isMultipleChoiceSingleAnswerType: null,
 	isMultipleChoiceMultiAnswerType: null,
@@ -25,11 +24,16 @@ export default Ember.Controller.extend({
 		this.set('isNotFirstQuestion', Ember.computed('model', function() {
 			return this.get('questionnaireHelper').getCurrentQuestionIndex() !== 0;
 		}));
+
+		this.set('mandatoryAndNoAnswer', Ember.computed('answer', 'model', function() {
+			return this.get('answer').length === 0 && this.get('model').mandatory;
+		}));
 	},
 
 	actions: {
 		nextQuestion() {
 			const nextQuestion = this.get('questionnaireHelper').nextQuestion();
+			this.set('answer', []);			
 
 			if(nextQuestion) {
 				this.transitionToRoute('question', nextQuestion); //send in single question
@@ -38,17 +42,11 @@ export default Ember.Controller.extend({
 			}
 		},
 		previousQuestion() {
-			const answer = this.get('answer');
-			const multiAnswers = this.get('multiAnswers');			
-			this.set('answer', null);
-			this.set('multiAnswers', null);
-
-			const previousQuestion = this.get('questionnaireHelper').previousQuestion();			
+			const previousQuestion = this.get('questionnaireHelper').previousQuestion();
+			this.set('answer', []);			
 
 			if(previousQuestion) {
 				this.transitionToRoute('question', previousQuestion); //send in single question
-			} else {
-				//To start page?
 			}
 		}
 	}
