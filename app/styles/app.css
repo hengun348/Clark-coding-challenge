@@ -1,0 +1,17 @@
+.question--slide-from-right {
+	transform: translateX(+100%);
+    animation: slide-left 0.5s forwards;
+}
+
+@keyframes slide-left {
+    100% { transform: translateX(0%); }
+}
+
+.question--slide-from-left {
+	transform: translateX(-100%);
+    animation: slide-right 0.5s forwards;
+}
+
+@keyframes slide-right {
+    100% { transform: translateX(0%); }
+}

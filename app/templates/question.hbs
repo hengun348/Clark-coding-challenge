@@ -1,19 +1,21 @@
-<p>{{model.description}} {{if model.mandatory '*'}}</p>
-<p>
-	{{#if isFreeTextType}}
-		{{input type="text" value=answer}}
-	{{/if}}
-	{{#if isMultipleChoiceSingleAnswerType}}
-		{{#each model.options as |option|}}
-			{{radio-button value=option checked=answer}} {{option}}<br>
-		{{/each}}
-	{{/if}}
-	{{#if isMultipleChoiceMultiAnswerType}}
-			{{multiselect-checkboxes options=model.options selection=answer}}
-	{{/if}}
-</p>
+<div class="question {{if slideFromRight "question--slide-from-right"}} {{if slideFromLeft "question--slide-from-left"}}">
+	<p>{{model.description}} {{if model.mandatory '*'}}</p>
+	<p>
+		{{#if isFreeTextType}}
+			{{input type="text" value=answer}}
+		{{/if}}
+		{{#if isMultipleChoiceSingleAnswerType}}
+			{{#each model.options as |option|}}
+				{{radio-button value=option checked=answer}} {{option}}<br>
+			{{/each}}
+		{{/if}}
+		{{#if isMultipleChoiceMultiAnswerType}}
+				{{multiselect-checkboxes options=model.options selection=answer}}
+		{{/if}}
+	</p>
 
-{{#if isNotFirstQuestion}}
-	<button {{action "previousQuestion"}}>Previous</button>
-{{/if}}
-<button {{action "nextQuestion"}} disabled={{mandatoryAndNoAnswer}}>Next</button>
+	{{#if isNotFirstQuestion}}
+		<button {{action "previousQuestion"}}>Previous</button>
+	{{/if}}
+	<button {{action "nextQuestion"}} disabled={{mandatoryAndNoAnswer}}>Next</button>
+</div>

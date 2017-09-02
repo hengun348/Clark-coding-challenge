@@ -7,6 +7,8 @@ export default Ember.Controller.extend({
 	isMultipleChoiceSingleAnswerType: null,
 	isMultipleChoiceMultiAnswerType: null,
 	isNotFirstQuestion: null,
+	slideFromLeft: false,
+	slideFromRight: false,
 
 	init() {
 		this.set('isFreeTextType', Ember.computed('model', function() {
@@ -32,9 +34,8 @@ export default Ember.Controller.extend({
 
 	actions: {
 		nextQuestion() {
-			const nextQuestion = this.get('questionnaireHelper').nextQuestion();
-			this.set('answer', []);			
-
+			this.set('slideFromRight', true);
+			this.resetSlidingVariables();
 			if(nextQuestion) {
 				this.transitionToRoute('question', nextQuestion); //send in single question
 			} else {
@@ -42,12 +43,19 @@ export default Ember.Controller.extend({
 			}
 		},
 		previousQuestion() {
-			const previousQuestion = this.get('questionnaireHelper').previousQuestion();
-			this.set('answer', []);			
+			this.set('slideFromLeft', true);
+			this.resetSlidingVariables();
 
 			if(previousQuestion) {
 				this.transitionToRoute('question', previousQuestion); //send in single question
 			}
 		}
+	},
+	resetSlidingVariables() {
+		let that = this;
+		Ember.run.later(function() {
+			that.set('slideFromRight', false);
+			that.set('slideFromLeft', false);
+		}, 500);
 	}
 });
