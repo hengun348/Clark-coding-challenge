@@ -3,6 +3,7 @@
 ## Future improvements
 1. Better integration with ember data
     * Answers could have relationship to questionnaire/question
+    * Already answered questions should be deleted from the store so they dont appear when starting questionnaire again. I still have some more learning needed to fully grasp the ember data philosophy.
 2. More unit tests (see test files for suggestions)
     * Logical heavy parts such as the questionnaire-helper and the controllers for the routes should be covered
 3. Better handling of sliding animation without timeout
