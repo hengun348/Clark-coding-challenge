@@ -203,4 +203,6 @@ export default function() {
 	this.get('/questionnaires', function() {
 		return questionnaires;
 	});
+
+	this.post('/answers');
 }

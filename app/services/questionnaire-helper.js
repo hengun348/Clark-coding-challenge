@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
+	questionnaireId: null,
 	currentQuestionIndex: null,
 	questions: null,
 	numberOfQuestions: null,
@@ -9,6 +10,7 @@ export default Ember.Service.extend({
 		const questions = questionnaire.get('questions').toArray();
 		const firstQuestionId = questions[0].id;
 		
+		this.set('questionnaireId', questionnaire.id);
 		this.set('questions', questions);
 		this.set('currentQuestionIndex', 0);
 		this.set('numberOfQuestions', questions.length);
@@ -52,5 +54,8 @@ export default Ember.Service.extend({
 		lastQuestionId = questions[numberOfQuestions - 1];
 		
 		return lastQuestionId;
+	},
+	getQuestionnaireId() {
+		return this.get('questionnaireId');
 	}
 });

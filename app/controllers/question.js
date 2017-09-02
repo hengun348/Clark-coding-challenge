@@ -34,9 +34,15 @@ export default Ember.Controller.extend({
 	actions: {
 		nextQuestion() {
 			const nextQuestionId = this.get('questionnaireHelper').getNextQuestionId();
+			const questionnaireId = this.get('questionnaireHelper').getQuestionnaireId();
 
 			this.set('slideFromRight', true);
 			this.resetSlidingVariables();
+
+			this.store.createRecord('answer', {
+				answer: this.model.get('answer'),
+				questionnaireId: questionnaireId
+			});
 
 			if(nextQuestionId) {
 				this.transitionToRoute('question', nextQuestionId);

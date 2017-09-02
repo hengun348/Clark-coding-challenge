@@ -5,6 +5,5 @@ export default DS.Model.extend({
 	mandatory: DS.attr('boolean', { defaultValue: false }),
 	description: DS.attr('string'),
 	questionnaire: DS.belongsTo('questionnaire', { inverse: 'questions' }),
-	answer: DS.attr(),
 	options: DS.attr()
 });

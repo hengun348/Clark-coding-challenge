@@ -1,3 +1,16 @@
-<strong>All questions answered</strong><br>
-<button {{action "previousQuestion"}}>Previous</button>
-<button {{action "submitQuestionnaire" model}}>Submit</button>
+{{answersSubmitted}}
+<section class="finish">
+	{{#if answersSubmitted}}
+		<strong>Answers submitted!</strong><br>
+	{{else}}
+		<strong>All questions answered</strong><br>
+	{{/if}}
+	<div class="bottom-navigation">
+		{{#if answersSubmitted}}
+			<button {{action "backToQuestionnaires"}}>Finish</button>
+		{{else}}
+			<button {{action "previousQuestion"}}>Previous</button>
+			<button {{action "submitAnswers"}}>Submit</button>
+		{{/if}}
+	</div>
+</section>
