@@ -1,5 +1,13 @@
 # Questionnaire app
 
+##Future improvements
+1. Better integration with ember data
+    * Answers could have relationship to questionnaire/question
+2. More unit tests (see test files for suggestions)
+    * Logical heavy parts such as the questionnaire-helper and the controllers for the routes should be covered
+3. Better handling of sliding animation without timeout
+    * Use ember event hooks to trigger animations instead
+
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
 
