@@ -9,6 +9,10 @@ export default Ember.Controller.extend({
 	isNotFirstQuestion: null,
 	slideFromLeft: false,
 	slideFromRight: false,
+	mandatoryAndNoAnswer: Ember.computed('model.answer', function() {
+		const model = this.get('model');
+		return !model.get('answer.length') && model.get('mandatory');
+	}),
 
 	init() {
 		this.set('isFreeTextType', Ember.computed('model', function() {
@@ -27,11 +31,7 @@ export default Ember.Controller.extend({
 			return this.get('questionnaireHelper').getCurrentQuestionIndex() !== 0;
 		}));
 
-		this.set('mandatoryAndNoAnswer', Ember.computed('answer', 'model', function() {
-			return this.get('answer').length === 0 && this.get('model').mandatory;
-		}));
 	},
-
 	actions: {
 		nextQuestion() {
 			const nextQuestionId = this.get('questionnaireHelper').getNextQuestionId();

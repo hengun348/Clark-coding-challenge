@@ -72,6 +72,11 @@ textarea {
 	margin-top: 30px;
 }
 
+.question__next--disabled {
+	cursor: default;
+	color: #cacaca;
+}
+
 .question--slide-from-right {
 	transform: translateX(+100%);
     animation: slide-left 0.5s forwards;
