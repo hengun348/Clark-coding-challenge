@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	questionnaireHelper: Ember.inject.service('questionnaire-helper'),	
-	answer: [],
+	questionnaireHelper: Ember.inject.service('questionnaire-helper'),
 	isFreeTextType: null,
 	isMultipleChoiceSingleAnswerType: null,
 	isMultipleChoiceMultiAnswerType: null,
