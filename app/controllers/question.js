@@ -15,15 +15,15 @@ export default Ember.Controller.extend({
 
 	init() {
 		this.set('isFreeTextType', Ember.computed('model', function() {
-			return this.get('model').type === 'freeText';
+			return this.get('model.type') === 'freeText';
 		}));
 
 		this.set('isMultipleChoiceSingleAnswerType', Ember.computed('model', function() {
-			return this.get('model').type === 'multipleChoicesSingleAnswer';
+			return this.get('model.type') === 'multipleChoicesSingleAnswer';
 		}));
 
 		this.set('isMultipleChoiceMultiAnswerType', Ember.computed('model', function() {
-			return this.get('model').type === 'multipleChoicesMultiAnswer';
+			return this.get('model.type') === 'multipleChoicesMultiAnswer';
 		}));
 
 		this.set('isNotFirstQuestion', Ember.computed('model', function() {
