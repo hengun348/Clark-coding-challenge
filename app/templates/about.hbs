@@ -1,5 +1,10 @@
-<strong>{{model.title}}</strong>
-<p>{{model.description}}</p>
-<p><strong>Number of questions: </strong>{{model.numberOfQuestions}}</p>
-<button {{action "backToQuestionnaires"}}>Back</button>
-<button {{action "startQuestionnaire" model}}>Start</button>
+<section class="about">
+	<h2>{{model.title}}</h2>
+	<p>{{model.description}}</p>
+	<p>{{model.numberOfQuestions}} questions</p>
+	
+	<div class="bottom-navigation">
+		<button {{action "backToQuestionnaires"}}>Back</button>
+		<button {{action "startQuestionnaire" model}}>Start</button>
+	</div>
+</section>

@@ -1,8 +1,8 @@
-<div class="question {{if slideFromRight "question--slide-from-right"}} {{if slideFromLeft "question--slide-from-left"}}">
+<section class="question {{if slideFromRight "question--slide-from-right"}} {{if slideFromLeft "question--slide-from-left"}}">
 	<p>{{model.description}} {{if model.mandatory '*'}}</p>
 	<p>
 		{{#if isFreeTextType}}
-			{{input type="text" value=answer}}
+			{{textarea rows="4" cols="25" value=answer}}
 		{{/if}}
 		{{#if isMultipleChoiceSingleAnswerType}}
 			{{#each model.options as |option|}}
@@ -14,8 +14,10 @@
 		{{/if}}
 	</p>
 
-	{{#if isNotFirstQuestion}}
-		<button {{action "previousQuestion"}}>Previous</button>
-	{{/if}}
-	<button {{action "nextQuestion"}} disabled={{mandatoryAndNoAnswer}}>Next</button>
-</div>
+	<div class="bottom-navigation">
+		{{#if isNotFirstQuestion}}
+			<button {{action "previousQuestion"}}>Previous</button>
+		{{/if}}
+		<button {{action "nextQuestion"}} disabled={{mandatoryAndNoAnswer}}>Next</button>
+	</div>
+</section>

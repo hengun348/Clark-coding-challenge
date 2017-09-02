@@ -1,7 +1,7 @@
 <ul class="questionnaires">
 	{{#each model as |questionnaire|}}
-		<li class="questionnaires__item">
-			{{#link-to "about" questionnaire.id}}
+		<li class="questionnaires-item">
+			{{#link-to "about" questionnaire.id class="questionnaires-item__link"}}
 				{{questionnaire.title}}
 			{{/link-to}}
 		</li>
