@@ -7,9 +7,10 @@
     * Logical heavy parts such as the questionnaire-helper and the controllers for the routes should be covered
 3. Better handling of sliding animation without timeout
     * Use ember event hooks to trigger animations instead
+    
+## About
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Questionnaire app done in Ember.js.
 
 ## Prerequisites
 
