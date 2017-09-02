@@ -5,12 +5,10 @@ export default Ember.Controller.extend({
 	
 	actions: {
 		startQuestionnaire(questionnaire) {
-			const firstQuestion = this.get('questionnaireHelper').startAndReceiveFirstQuestion(questionnaire);
+			const firstQuestionId = this.get('questionnaireHelper').startAndReceiveFirstQuestionId(questionnaire);
 			
-			if(firstQuestion) {
-				this.transitionToRoute('question', firstQuestion);
-			} else {
-				//Error
+			if(firstQuestionId) {
+				this.transitionToRoute('question', firstQuestionId);
 			}
 		},
 		backToQuestionnaires() {

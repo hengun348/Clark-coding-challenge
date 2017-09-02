@@ -34,20 +34,25 @@ export default Ember.Controller.extend({
 
 	actions: {
 		nextQuestion() {
+			const nextQuestionId = this.get('questionnaireHelper').getNextQuestionId();
+
 			this.set('slideFromRight', true);
 			this.resetSlidingVariables();
-			if(nextQuestion) {
-				this.transitionToRoute('question', nextQuestion); //send in single question
+
+			if(nextQuestionId) {
+				this.transitionToRoute('question', nextQuestionId);
 			} else {
-				this.transitionToRoute('finish'); //send in single question
+				this.transitionToRoute('finish');
 			}
 		},
 		previousQuestion() {
+			const previousQuestionId = this.get('questionnaireHelper').getPreviousQuestionId();
+			
 			this.set('slideFromLeft', true);
 			this.resetSlidingVariables();
 
-			if(previousQuestion) {
-				this.transitionToRoute('question', previousQuestion); //send in single question
+			if(previousQuestionId) {
+				this.transitionToRoute('question', previousQuestionId);
 			}
 		}
 	},

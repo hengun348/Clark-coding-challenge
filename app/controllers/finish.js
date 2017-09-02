@@ -7,8 +7,11 @@ export default Ember.Controller.extend({
 		submitQuestionnaire() {
 		},
 		previousQuestion() {
-			const previousQuestion = this.get('questionnaireHelper').lastQuestion();
-			this.transitionToRoute('question', previousQuestion);
+			const lastQuestionId = this.get('questionnaireHelper').getLastQuestionId();
+
+			if(lastQuestionId) {
+				this.transitionToRoute('question', lastQuestionId);
+			}
 		}
 	}
 });
