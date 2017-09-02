@@ -5,8 +5,5 @@ moduleForModel('question', 'Unit | Model | question', {
 	needs: []
 });
 
-test('it exists', function(assert) {
-	let model = this.subject();
-	// let store = this.store();
-	assert.ok(!!model);
+test('should belong to a questionnaire model', function(assert) {
 });

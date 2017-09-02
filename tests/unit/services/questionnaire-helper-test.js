@@ -5,8 +5,16 @@ moduleFor('service:questionnaire-helper', 'Unit | Service | questionnaire helper
   // needs: ['service:foo']
 });
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  let service = this.subject();
-  assert.ok(service);
-});
+//startAndReceiveFirstQuestionId
+test('should return first question', function(assert) {});
+test('should set correct properties based on questionnaire', function(assert) {});
+
+//getNextQuestionId
+test('should return correct id', function(assert) {});
+test('if last question should return undefined', function(assert) {});
+test('should increment current question index', function(assert) {});
+
+//getPreviousQuestionId
+test('should return correct id', function(assert) {});
+test('if first question should return undefined', function(assert) {});
+test('should decrement current question index', function(assert) {});
