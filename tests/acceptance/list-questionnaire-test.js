@@ -7,6 +7,6 @@ test('should list questionnaries.', function (assert) {
 	visit('/');
 
 	andThen(function() {
-		assert.equal(find('.questionnaires__item').length, 3, 'should see 3 listings');
+		assert.equal(find('.questionnaires-item').length, 3, 'should see 3 listings');
 	});
 });
