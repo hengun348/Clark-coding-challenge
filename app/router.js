@@ -11,6 +11,8 @@ Router.map(function() {
 	this.route('about', { path: '/questionnaires/:questionnaire_id/about' });
 	this.route('question', { path: '/questionnaires/question/:question_id' });
 	this.route('finish', { path: '/questionnaires/finish' });
+
+	this.route('404', { path: '/*path' });
 });
 
 export default Router;
