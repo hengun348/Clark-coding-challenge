@@ -1,40 +1,56 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-	currentQuestionnaire: null,
 	currentQuestionIndex: null,
-	questions: [],
+	questions: null,
 	numberOfQuestions: null,
 
-	startAndReceiveFirstQuestion(questionnaire) {
-		this.set('currentQuestion', questionnaire.id);
-		this.set('questions', questionnaire.get('questions'));
+	startAndReceiveFirstQuestionId(questionnaire) {
+		const questions = questionnaire.get('questions').toArray();
+		const firstQuestionId = questions[0].id;
+		
+		this.set('questions', questions);
 		this.set('currentQuestionIndex', 0);
-		this.set('numberOfQuestions', questionnaire.get('questions.length'));
+		this.set('numberOfQuestions', questions.length);
 
-		return questionnaire.get('questions')[0];
+		return firstQuestionId;
 	},
 	getCurrentQuestionIndex() {
 		return this.get('currentQuestionIndex');
 	},
-	nextQuestion() {
-		if(this.get('currentQuestionIndex') === this.get('numberOfQuestions') - 1) {
+	getNextQuestionId() {
+		let nextQuestionId,
+			currentQuestionIndex = this.get('currentQuestionIndex');
+		
+		if(currentQuestionIndex === this.get('numberOfQuestions') - 1) {
 			return;
 		}
 
-		this.incrementProperty('currentQuestionIndex');
+		currentQuestionIndex = this.incrementProperty('currentQuestionIndex');
+		nextQuestionId = this.get('questions')[currentQuestionIndex].id;
 
-		return this.get('questions')[this.get('currentQuestionIndex')];
+		return nextQuestionId;
 	},
-	previousQuestion() {
-		if(this.get('currentQuestionIndex') === 0) {
+	getPreviousQuestionId() {
+		let previousQuestionId,
+			currentQuestionIndex = this.get('currentQuestionIndex');
+		
+		if(!currentQuestionIndex > 0) {
 			return;
 		}
+		
+		currentQuestionIndex = this.decrementProperty('currentQuestionIndex');
+		previousQuestionId = this.get('questions')[currentQuestionIndex].id;
 
-		this.decrementProperty('currentQuestionIndex');
-		return this.get('questions')[this.get('currentQuestionIndex')];
+		return previousQuestionId;
 	},
-	lastQuestion() {
-		return this.get('questions')[this.get('numberOfQuestions')-1];
+	getLastQuestionId() {
+		let lastQuestionId,
+			questions = this.get('questions'),
+			numberOfQuestions = this.get('numberOfQuestions');
+		
+		lastQuestionId = questions[numberOfQuestions - 1];
+		
+		return lastQuestionId;
 	}
 });
