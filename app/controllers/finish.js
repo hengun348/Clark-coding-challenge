@@ -23,6 +23,7 @@ export default Ember.Controller.extend({
 			}
 		},
 		backToQuestionnaires() {
+			this.set('answersSubmitted', false);
 			this.transitionToRoute('questionnaires');
 		}
 	},
